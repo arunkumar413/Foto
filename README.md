@@ -8,6 +8,18 @@ remove duplicate photos also detect the objects, people in the photos.
 
 ## Tools used:
 
-Python Pandas:filtering the photos by date (today, this month, last month, this year etc), rating, albums.
-Scikitlearn: Machine learning for detecting objects, people etc.,
-Javascript: Front end and UI
+#### Python Pandas
+
+Filtering the photos by date (today, this month, last month, this year etc), rating, albums.
+
+#### Scikitlearn:
+
+Machine learning for detecting objects, people etc,.
+
+#### Javascript:
+
+Front end and UI
+
+#### Exifread:
+
+Exifread library for reading photo's metadata/EXIF data.
