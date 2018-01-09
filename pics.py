@@ -5,7 +5,7 @@ import glob
 import numpy as np
 from datetime import datetime
 
-path = '/home/arun/Pictures/2017/12/27/'  # Directory where all the pictures are located
+path = '/home/arun/Pictures/2017/12/27/'  # Directory where all the pictures are located.
 file_name = 'DSC_0436.JPG'  # Sample file to get the metadata
 f = open(path + file_name, 'rb')  # read the file
 tags = exifread.process_file(f)  # extract the metadata
@@ -54,7 +54,7 @@ for col in cols:
 ## for each picture get the metadata info and append it to the dataframe
 
 def getparams(f):
-    path = '/home/arun/Pictures/2017/12/27/'
+    path = '/home/arun/Pictures/2017/12/27/'  # chance this as per your convenience
     fr = open(path + f, 'rb')  # Read the file
     tags = exifread.process_file(fr)  # extract tags
     for col in cols:
@@ -64,7 +64,7 @@ def getparams(f):
 pics['file_name'].apply(getparams, f)
 
 # Add new columns
-pics['rating'] = 0
+pics['rating'] = 0  # default rating is zero
 pics['location'] = ''
 pics['tag2'] = ''
 pics['tag3'] = ''
@@ -84,7 +84,7 @@ else:
     lastMonth = currentMonth - 1
 
 
-# Connect the frontend click events to these functions/handlers to filter the images
+# Connect the frontend click events to the below functions/handlers to filter the pics
 
 def thismonth():
     pics_this_month = pics[pics['EXIF DateTimeOriginal'].dt.month == currentMonth]
@@ -93,10 +93,12 @@ def thismonth():
 def thisyear():
     pics_this_year = pics[pics['EXIF DateTimeOriginal'].dt.year == currentYear]
 
-
 def today():
     pics_today = pics[pics['EXIF DateTimeOriginal'].dt.date == currentDay]
 
-
 def lastmonth():
-    pics_last_month = pics[pics['EXIF DateTimeOriginal'].dt.month == lastMonth]
+    return pics[pics['EXIF DateTimeOriginal'].dt.month == lastMonth]
+
+
+def rating(score):
+    rated = pics[pics['rating'] == score]
