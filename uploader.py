@@ -26,8 +26,8 @@ def file_upload():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FDER"], filename))
             filenames.append(filename)
+            create_df(filenames)
     return render_template('home.html')
-    create_df(filenames)
 
 
 def create_df(fnames):
